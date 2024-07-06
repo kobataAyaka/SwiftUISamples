@@ -15,7 +15,7 @@ struct ContentView: View {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Hello, git-flow world!")
             Button {
                 self.presentingModal = true
             } label: {
