@@ -14,8 +14,15 @@ struct ListView: View {
     var body: some View {
         NavigationStack {
             List(items, id: \.self) { item in
-                Text(item)
+                NavigationLink(value: item) {
+                    Text(item)
+                }
             }
+            .navigationTitle(Text("ListView"))
+            .navigationDestination(for: String.self) { value in
+                ItemView(itemName: value)
+            }
+            
             Button {
                 dismiss()
             } label: {
