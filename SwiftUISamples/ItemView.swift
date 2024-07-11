@@ -8,9 +8,13 @@
 import SwiftUI
 
 struct ItemView: View {
-    @State var itemName: String
+    @State var item: Item
     
     var body: some View {
-        Text(itemName)
+        Image(item.image)
+            .resizable()
+            .aspectRatio(contentMode: .fit)
+            .frame(width: 200, height: 200)
+        Text(item.name)
     }
 }

@@ -61,9 +61,9 @@
 				7F915BD12C37A9110014A0A5 /* ContentView.swift */,
 				7F915BDD2C37AB4D0014A0A5 /* SecondView.swift */,
 				7F31C4902C3C2DF90084A3D1 /* ListView.swift */,
+				7F31C4922C3CE5F30084A3D1 /* ItemView.swift */,
 				7F915BD32C37A9130014A0A5 /* Assets.xcassets */,
 				7F915BD52C37A9130014A0A5 /* Preview Content */,
-				7F31C4922C3CE5F30084A3D1 /* ItemView.swift */,
 			);
 			path = SwiftUISamples;
 			sourceTree = "<group>";

@@ -11,14 +11,15 @@ struct Item: Hashable {
     let id = UUID()
     var name: String
     var net: Float
+    var image: String
 }
 
 @Observable class ItemModel: ObservableObject {
     var items: [Item] = [
-            Item(name: "사과", net: 200.0),
-            Item(name: "우유", net: 1000.0),
-            Item(name: "계란", net: 60.0),
-            Item(name: "김치", net: 500.0)
+        Item(name: "사과", net: 200.0, image: "apple"),
+            Item(name: "우유", net: 1000.0, image: "milk"),
+            Item(name: "계란", net: 60.0, image: "egg"),
+            Item(name: "김치", net: 500.0, image: "kimchi")
         ]
 }
 
@@ -29,14 +30,14 @@ struct ListView: View {
     var body: some View {
         NavigationStack {
             List(model.items, id: \.self) { item in
-                NavigationLink(value: item.name) {
+                NavigationLink(value: item) {
                     Text(item.name)
                     Text("\(item.net, specifier: "%.2f") g")
                 }
             }
             .navigationTitle(Text("ListView"))
-            .navigationDestination(for: String.self) { value in
-                ItemView(itemName: value)
+            .navigationDestination(for: Item.self) { value in
+                ItemView(item: value)
             }
             
             Button {
