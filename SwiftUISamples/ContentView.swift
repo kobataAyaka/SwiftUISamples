@@ -9,13 +9,14 @@ import SwiftUI
 
 struct ContentView: View {
     @State var presentingModal = false
+    @State var fullscreenList = false
     
     var body: some View {
         VStack {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
-            Text("Hello, world!")
+            Text("Hello, git-flow world!")
             Button {
                 self.presentingModal = true
             } label: {
@@ -24,7 +25,15 @@ struct ContentView: View {
             .sheet(isPresented: $presentingModal) {
                 SecondView(presentingModal: $presentingModal)
             }
-
+            
+            Button {
+                self.fullscreenList = true
+            } label: {
+                Text("fullscreen ListView 표시 버튼")
+            }
+            .fullScreenCover(isPresented: $fullscreenList) {
+                ListView()
+            }
         }
         .padding()
     }
