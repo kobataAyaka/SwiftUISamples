@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var presentingModal = false
+    @State var fullscreenList = false
     
     var body: some View {
         VStack {
@@ -24,7 +25,15 @@ struct ContentView: View {
             .sheet(isPresented: $presentingModal) {
                 SecondView(presentingModal: $presentingModal)
             }
-
+            
+            Button {
+                self.fullscreenList = true
+            } label: {
+                Text("fullscreen ListView 표시 버튼")
+            }
+            .fullScreenCover(isPresented: $fullscreenList) {
+                ListView()
+            }
         }
         .padding()
     }
