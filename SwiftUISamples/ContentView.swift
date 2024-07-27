@@ -7,9 +7,14 @@
 
 import SwiftUI
 
+class NavigationState: ObservableObject {
+    @Published var currentView: String = "content"
+}
+
 struct ContentView: View {
     @State var presentingModal = false
     @State var fullscreenList = false
+    @EnvironmentObject var navigationState: NavigationState
     
     var body: some View {
         VStack {
@@ -33,6 +38,15 @@ struct ContentView: View {
             }
             .fullScreenCover(isPresented: $fullscreenList) {
                 ListView()
+            }
+            
+            Button {
+                navigationState.currentView = "countUp"
+            } label: {
+                Text("@EnvironmentObject를 이용한 CountView 표시 버튼")
+            }
+            if navigationState.currentView == "countUp" {
+                CounterView()
             }
         }
         .padding()
