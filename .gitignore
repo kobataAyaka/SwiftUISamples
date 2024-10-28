@@ -95,3 +95,6 @@ iOSInjectionProject/
 *.xccheckout
 *.xcuserstate
 xcshareddata/
+Info.plist
+.env
+.arkana.yml

@@ -3,13 +3,18 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 56;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		7F31C4912C3C2DF90084A3D1 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F31C4902C3C2DF90084A3D1 /* ListView.swift */; };
 		7F31C4932C3CE5F30084A3D1 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F31C4922C3CE5F30084A3D1 /* ItemView.swift */; };
 		7F31C4952C555E410084A3D1 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F31C4942C555E410084A3D1 /* CounterView.swift */; };
+		7F48480B2CBBADD200E8472B /* NotionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F48480A2CBBADD200E8472B /* NotionListView.swift */; };
+		7F48480E2CBBB13D00E8472B /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 7F48480D2CBBB13D00E8472B /* Alamofire */; };
+		7F4848122CBBB45D00E8472B /* TodoItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4848112CBBB45D00E8472B /* TodoItemView.swift */; };
+		7F4848142CBBB8F400E8472B /* APIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F4848132CBBB8F400E8472B /* APIClient.swift */; };
+		7F4848182CBBD0DC00E8472B /* ArkanaKeys in Frameworks */ = {isa = PBXBuildFile; productRef = 7F4848172CBBD0DC00E8472B /* ArkanaKeys */; };
 		7F915BD02C37A9110014A0A5 /* SwiftUISamplesApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F915BCF2C37A9110014A0A5 /* SwiftUISamplesApp.swift */; };
 		7F915BD22C37A9110014A0A5 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F915BD12C37A9110014A0A5 /* ContentView.swift */; };
 		7F915BD42C37A9130014A0A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F915BD32C37A9130014A0A5 /* Assets.xcassets */; };
@@ -21,6 +26,10 @@
 		7F31C4902C3C2DF90084A3D1 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		7F31C4922C3CE5F30084A3D1 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		7F31C4942C555E410084A3D1 /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
+		7F48480A2CBBADD200E8472B /* NotionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotionListView.swift; sourceTree = "<group>"; };
+		7F4848112CBBB45D00E8472B /* TodoItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TodoItemView.swift; sourceTree = "<group>"; };
+		7F4848132CBBB8F400E8472B /* APIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIClient.swift; sourceTree = "<group>"; };
+		7F4848152CBBCD4E00E8472B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		7F915BCC2C37A9110014A0A5 /* SwiftUISamples.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftUISamples.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7F915BCF2C37A9110014A0A5 /* SwiftUISamplesApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUISamplesApp.swift; sourceTree = "<group>"; };
 		7F915BD12C37A9110014A0A5 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -34,6 +43,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7F4848182CBBD0DC00E8472B /* ArkanaKeys in Frameworks */,
+				7F48480E2CBBB13D00E8472B /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -59,6 +70,7 @@
 		7F915BCE2C37A9110014A0A5 /* SwiftUISamples */ = {
 			isa = PBXGroup;
 			children = (
+				7F4848152CBBCD4E00E8472B /* Info.plist */,
 				7F915BCF2C37A9110014A0A5 /* SwiftUISamplesApp.swift */,
 				7F915BD12C37A9110014A0A5 /* ContentView.swift */,
 				7F915BDD2C37AB4D0014A0A5 /* SecondView.swift */,
@@ -67,6 +79,9 @@
 				7F915BD32C37A9130014A0A5 /* Assets.xcassets */,
 				7F915BD52C37A9130014A0A5 /* Preview Content */,
 				7F31C4942C555E410084A3D1 /* CounterView.swift */,
+				7F48480A2CBBADD200E8472B /* NotionListView.swift */,
+				7F4848112CBBB45D00E8472B /* TodoItemView.swift */,
+				7F4848132CBBB8F400E8472B /* APIClient.swift */,
 			);
 			path = SwiftUISamples;
 			sourceTree = "<group>";
@@ -95,6 +110,10 @@
 			dependencies = (
 			);
 			name = SwiftUISamples;
+			packageProductDependencies = (
+				7F48480D2CBBB13D00E8472B /* Alamofire */,
+				7F4848172CBBD0DC00E8472B /* ArkanaKeys */,
+			);
 			productName = SwiftUISamples;
 			productReference = 7F915BCC2C37A9110014A0A5 /* SwiftUISamples.app */;
 			productType = "com.apple.product-type.application";
@@ -123,6 +142,10 @@
 				Base,
 			);
 			mainGroup = 7F915BC32C37A9110014A0A5;
+			packageReferences = (
+				7F48480C2CBBB13D00E8472B /* XCRemoteSwiftPackageReference "Alamofire" */,
+				7F4848162CBBD0DC00E8472B /* XCLocalSwiftPackageReference "ArkanaKeys/ArkanaKeys" */,
+			);
 			productRefGroup = 7F915BCD2C37A9110014A0A5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -150,11 +173,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				7F31C4912C3C2DF90084A3D1 /* ListView.swift in Sources */,
+				7F48480B2CBBADD200E8472B /* NotionListView.swift in Sources */,
 				7F915BDE2C37AB4D0014A0A5 /* SecondView.swift in Sources */,
 				7F915BD22C37A9110014A0A5 /* ContentView.swift in Sources */,
 				7F31C4932C3CE5F30084A3D1 /* ItemView.swift in Sources */,
+				7F4848122CBBB45D00E8472B /* TodoItemView.swift in Sources */,
 				7F915BD02C37A9110014A0A5 /* SwiftUISamplesApp.swift in Sources */,
 				7F31C4952C555E410084A3D1 /* CounterView.swift in Sources */,
+				7F4848142CBBB8F400E8472B /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -291,6 +317,7 @@
 				DEVELOPMENT_TEAM = MN4377FCNS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftUISamples/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -320,6 +347,7 @@
 				DEVELOPMENT_TEAM = MN4377FCNS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SwiftUISamples/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -360,6 +388,36 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		7F4848162CBBD0DC00E8472B /* XCLocalSwiftPackageReference "ArkanaKeys/ArkanaKeys" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ArkanaKeys/ArkanaKeys;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		7F48480C2CBBB13D00E8472B /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.9.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7F48480D2CBBB13D00E8472B /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 7F48480C2CBBB13D00E8472B /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+		7F4848172CBBD0DC00E8472B /* ArkanaKeys */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ArkanaKeys;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7F915BC42C37A9110014A0A5 /* Project object */;
 }

@@ -15,6 +15,7 @@ struct ContentView: View {
     @State var presentingModal = false
     @State var fullscreenList = false
     @EnvironmentObject var navigationState: NavigationState
+    @State var notionList = false
     
     var body: some View {
         VStack {
@@ -47,6 +48,15 @@ struct ContentView: View {
             }
             if navigationState.currentView == "countUp" {
                 CounterView()
+            }
+            
+            Button {
+                self.notionList = true
+            } label: {
+                Text("Notion Database 표시 버튼")
+            }
+            .fullScreenCover(isPresented: $notionList) {
+                NotionListView()
             }
         }
         .padding()
