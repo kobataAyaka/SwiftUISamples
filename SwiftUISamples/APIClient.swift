@@ -41,14 +41,6 @@ class APIClient {
         ]
         
         AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
-            .responseJSON { response in
-                switch response.result {
-                case .success(let data):
-                    print("Response data: \(data)")  // ここでレスポンスを確認
-                case .failure(let error):
-                    print("Failed to load data: \(error)")
-                }
-            }
             .responseDecodable(of: NotionResponse.self) { response in
                 switch response.result {
                 case .success(let notionResponse):
