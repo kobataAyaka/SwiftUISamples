@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7F1201DD2CEEF248001CFDAD /* GradientShadowModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F1201DC2CEEF248001CFDAD /* GradientShadowModifier.swift */; };
 		7F31C4912C3C2DF90084A3D1 /* ListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F31C4902C3C2DF90084A3D1 /* ListView.swift */; };
 		7F31C4932C3CE5F30084A3D1 /* ItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F31C4922C3CE5F30084A3D1 /* ItemView.swift */; };
 		7F31C4952C555E410084A3D1 /* CounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F31C4942C555E410084A3D1 /* CounterView.swift */; };
@@ -23,6 +24,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		7F1201DC2CEEF248001CFDAD /* GradientShadowModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientShadowModifier.swift; sourceTree = "<group>"; };
 		7F31C4902C3C2DF90084A3D1 /* ListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListView.swift; sourceTree = "<group>"; };
 		7F31C4922C3CE5F30084A3D1 /* ItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemView.swift; sourceTree = "<group>"; };
 		7F31C4942C555E410084A3D1 /* CounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CounterView.swift; sourceTree = "<group>"; };
@@ -82,6 +84,7 @@
 				7F48480A2CBBADD200E8472B /* NotionListView.swift */,
 				7F4848112CBBB45D00E8472B /* TodoItemView.swift */,
 				7F4848132CBBB8F400E8472B /* APIClient.swift */,
+				7F1201DC2CEEF248001CFDAD /* GradientShadowModifier.swift */,
 			);
 			path = SwiftUISamples;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				7F4848122CBBB45D00E8472B /* TodoItemView.swift in Sources */,
 				7F915BD02C37A9110014A0A5 /* SwiftUISamplesApp.swift in Sources */,
 				7F31C4952C555E410084A3D1 /* CounterView.swift in Sources */,
+				7F1201DD2CEEF248001CFDAD /* GradientShadowModifier.swift in Sources */,
 				7F4848142CBBB8F400E8472B /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
