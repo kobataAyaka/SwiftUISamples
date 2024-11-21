@@ -14,3 +14,8 @@ SwiftUIのサンプルです。
     - HTTP 네트워킹 라이브러리 Alamofire를 이용한 서버 통신 샘플입니다. https://github.com/Alamofire/Alamofire
   - Notion API 연동
     - Notion Database 내용을 표시하는 샘플입니다. https://developers.notion.com/
+
+## UI 샘플
+  - 그라데이션이 부여된 쉐도우
+    - View Modifier로 작성해서 모든 뷰에서 이용가능합니다.
+    - ![iOS.png](https://github.com/kobataAyaka/SwiftUISamples/blob/images/Simulator%20Screenshot%20-%20iPhone%20SE%20(3rd%20generation)%20-%202024-11-21%20at%2014.10.50.png)
