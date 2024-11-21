@@ -11,10 +11,16 @@ struct ItemView: View {
     @State var item: Item
     
     var body: some View {
-        Image(item.image)
-            .resizable()
-            .aspectRatio(contentMode: .fit)
-            .frame(width: 200, height: 200)
-        Text(item.name)
+        VStack {
+            Image(item.image)
+                .resizable()
+                .aspectRatio(contentMode: .fit)
+                .frame(width: 200, height: 200)
+                .clipShape(RoundedRectangle(cornerRadius: 50))
+                .gradientShadow(colors: [Color.yellow, Color.purple], offset: CGSize(width: 10, height: 10), cornerRadius: 50)
+            Spacer()
+            Text(item.name)
+            Spacer()
+        }
     }
 }
