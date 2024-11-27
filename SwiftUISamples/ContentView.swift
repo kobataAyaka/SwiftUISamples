@@ -19,10 +19,6 @@ struct ContentView: View {
     
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-            Text("Hello, git-flow world!")
             Button {
                 self.presentingModal = true
             } label: {
@@ -59,6 +55,7 @@ struct ContentView: View {
                 NotionListView()
             }
         }
+        .buttonStyle(CapsuleButtonStyle())
         .padding()
     }
 }
