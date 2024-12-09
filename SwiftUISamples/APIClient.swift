@@ -40,22 +40,42 @@ class APIClient {
             ]
         ]
         
-        return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<[Todo], Error>) in
-            AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
-                .responseDecodable(of: NotionResponse.self) { response in
-                    switch response.result {
-                    case .success(let notionResponse):
-                        let todos = notionResponse.results.compactMap { resultItem -> Todo? in
-                            let name = resultItem.properties.name.title.first?.plain_text ?? "No Name"
-                            let done = resultItem.properties.done.checkbox
-                            return Todo(name: name, done: done)
-                        }
-                        continuation.resume(returning: todos)
-                    case .failure(let error):
-                        continuation.resume(throwing: error)
-                    }
-                }
+        // Alamofire 5.5~ 추가된 async/await API
+        let response = try await AF.request(
+            url,
+            method: .post,
+            parameters: parameters,
+            encoding: JSONEncoding.default,
+            headers: headers
+        )
+            .serializingDecodable(NotionResponse.self)
+            .value
+        
+        // NotionResponse 를 [Todo] 로 변환
+        return response.results.compactMap { resultItem -> Todo? in
+            let name = resultItem.properties.name.title.first?.plain_text ?? "No Name"
+            let done = resultItem.properties.done.checkbox
+            return Todo(name: name, done: done)
         }
+        
+        // Alamofire 5.5 이전이라면 이쪽을 사용
+//        return try await withCheckedThrowingContinuation { (continuation: CheckedContinuation<[Todo], Error>) in
+//            AF.request(url, method: .post, parameters: parameters, encoding: JSONEncoding.default, headers: headers)
+//                .responseDecodable(of: NotionResponse.self) { response in
+//                    switch response.result {
+//                    case .success(let notionResponse):
+//                        let todos = notionResponse.results.compactMap { resultItem -> Todo? in
+//                            let name = resultItem.properties.name.title.first?.plain_text ?? "No Name"
+//                            let done = resultItem.properties.done.checkbox
+//                            return Todo(name: name, done: done)
+//                        }
+//                        continuation.resume(returning: todos)
+//                    case .failure(let error):
+//                        continuation.resume(throwing: error)
+//                    }
+//                }
+//        }
+
     }
 }
 
