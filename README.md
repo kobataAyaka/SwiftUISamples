@@ -22,3 +22,7 @@ SwiftUIのサンプルです。
   - 그라데이션이 부여된 쉐도우
     - View Modifier로 작성해서 모든 뷰에서 이용가능합니다.
     - ![iOS.png](https://github.com/kobataAyaka/SwiftUISamples/blob/images/Simulator%20Screenshot%20-%20iPhone%20SE%20(3rd%20generation)%20-%202024-11-21%20at%2014.10.50.png)
+
+## Swift Concurrency (async/await)
+  - Alamofire 5.5부터 지원하는 방법입니다. https://github.com/Alamofire/Alamofire/blob/master/Documentation/AdvancedUsage.md#using-alamofire-with-swift-concurrency
+  - 5.5 이전에서는 withCheckedThrowingContinuation를 이용했었습니다.
