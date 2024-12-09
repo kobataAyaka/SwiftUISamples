@@ -22,18 +22,15 @@ struct Todo: Hashable, Codable {
 class TodoModel: ObservableObject {
     @Published var items: [Todo] = []
     
-    func loadTodos() {
-        APIClient.shared.fetchTodos { [weak self] result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success(let todos):
-                    self?.items = todos
-                case .failure(let error):
-                    print("Failed to load todos: \(error)")
-                }
+    @MainActor
+        func loadTodos() async {
+            do {
+                let todos = try await APIClient.shared.fetchTodos()
+                self.items = todos
+            } catch {
+                print("Failed to load todos: \(error)")
             }
         }
-    }
 }
 
 struct NotionListView: View {
@@ -52,7 +49,9 @@ struct NotionListView: View {
                 TodoItemView(item: value)
             }
             .onAppear {
-                model.loadTodos()
+                Task {
+                    await model.loadTodos()
+                }
             }
             
             Button {
