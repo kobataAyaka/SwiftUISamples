@@ -16,6 +16,9 @@ SwiftUIのサンプルです。
     - Notion Database 내용을 표시하는 샘플입니다. https://developers.notion.com/
 
 ## UI 샘플
+  - 버튼
+    - 배경색 등 각종 설정을 부여한 버튼입니다. ButtonStyle를 화면전체(VStack)에 적용했습니다.
+    - ![iOS.png](https://github.com/kobataAyaka/SwiftUISamples/blob/images/ButtonStyle.png)
   - 그라데이션이 부여된 쉐도우
     - View Modifier로 작성해서 모든 뷰에서 이용가능합니다.
     - ![iOS.png](https://github.com/kobataAyaka/SwiftUISamples/blob/images/Simulator%20Screenshot%20-%20iPhone%20SE%20(3rd%20generation)%20-%202024-11-21%20at%2014.10.50.png)
