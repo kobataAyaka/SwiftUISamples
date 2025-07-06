@@ -22,6 +22,9 @@
 		7F915BD42C37A9130014A0A5 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F915BD32C37A9130014A0A5 /* Assets.xcassets */; };
 		7F915BD72C37A9130014A0A5 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7F915BD62C37A9130014A0A5 /* Preview Assets.xcassets */; };
 		7F915BDE2C37AB4D0014A0A5 /* SecondView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7F915BDD2C37AB4D0014A0A5 /* SecondView.swift */; };
+		7FFF430C2E1A11000016582F /* LanguageState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFF43082E1A11000016582F /* LanguageState.swift */; };
+		7FFF430D2E1A11000016582F /* LanguageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7FFF43092E1A11000016582F /* LanguageType.swift */; };
+		7FFF430E2E1A11000016582F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 7FFF430A2E1A11000016582F /* Localizable.xcstrings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +54,9 @@
 		7F915BD62C37A9130014A0A5 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		7F915BDD2C37AB4D0014A0A5 /* SecondView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondView.swift; sourceTree = "<group>"; };
 		7FFF42F52E18BAD30016582F /* SwiftUISamplesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SwiftUISamplesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		7FFF43082E1A11000016582F /* LanguageState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageState.swift; sourceTree = "<group>"; };
+		7FFF43092E1A11000016582F /* LanguageType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageType.swift; sourceTree = "<group>"; };
+		7FFF430A2E1A11000016582F /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -106,6 +112,7 @@
 		7F915BCE2C37A9110014A0A5 /* SwiftUISamples */ = {
 			isa = PBXGroup;
 			children = (
+				7FFF430B2E1A11000016582F /* Language */,
 				7F5CFA1D2CF429CE006F57B7 /* CustomUI */,
 				7F4848152CBBCD4E00E8472B /* Info.plist */,
 				7F915BCF2C37A9110014A0A5 /* SwiftUISamplesApp.swift */,
@@ -130,6 +137,16 @@
 				7F915BD62C37A9130014A0A5 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7FFF430B2E1A11000016582F /* Language */ = {
+			isa = PBXGroup;
+			children = (
+				7FFF43082E1A11000016582F /* LanguageState.swift */,
+				7FFF43092E1A11000016582F /* LanguageType.swift */,
+				7FFF430A2E1A11000016582F /* Localizable.xcstrings */,
+			);
+			path = Language;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -200,11 +217,13 @@
 			};
 			buildConfigurationList = 7F915BC72C37A9110014A0A5 /* Build configuration list for PBXProject "SwiftUISamples" */;
 			compatibilityVersion = "Xcode 14.0";
-			developmentRegion = en;
+			developmentRegion = ko;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
+				ja,
+				ko,
 			);
 			mainGroup = 7F915BC32C37A9110014A0A5;
 			packageReferences = (
@@ -228,6 +247,7 @@
 			files = (
 				7F915BD72C37A9130014A0A5 /* Preview Assets.xcassets in Resources */,
 				7F915BD42C37A9130014A0A5 /* Assets.xcassets in Resources */,
+				7FFF430E2E1A11000016582F /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,6 +275,8 @@
 				7F915BD02C37A9110014A0A5 /* SwiftUISamplesApp.swift in Sources */,
 				7F31C4952C555E410084A3D1 /* CounterView.swift in Sources */,
 				7F1201DD2CEEF248001CFDAD /* GradientShadowModifier.swift in Sources */,
+				7FFF430C2E1A11000016582F /* LanguageState.swift in Sources */,
+				7FFF430D2E1A11000016582F /* LanguageType.swift in Sources */,
 				7F4848142CBBB8F400E8472B /* APIClient.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -336,6 +358,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -392,6 +415,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

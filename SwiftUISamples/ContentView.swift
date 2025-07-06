@@ -16,6 +16,8 @@ struct ContentView: View {
     @State var fullscreenList = false
     @EnvironmentObject var navigationState: NavigationState
     @State var notionList = false
+    @State var isShowLanguagePicker: Bool = false
+    @EnvironmentObject var languageState: LanguageState
     
     var body: some View {
         VStack {
@@ -54,12 +56,36 @@ struct ContentView: View {
             .fullScreenCover(isPresented: $notionList) {
                 NotionListView()
             }
+            Button {
+                self.isShowLanguagePicker.toggle()
+            } label: {
+                Label("언어설정", systemImage: "globe")
+            }
+            .sheet(isPresented: $isShowLanguagePicker) {
+                NavigationStack {
+                    Picker("언어 선택", selection: $languageState.type) {
+                        Text("한국어").tag(LanguageType.Korean)
+                        Text("일본어").tag(LanguageType.Japanese)
+                        Text("영어").tag(LanguageType.English)
+                        Text("기본설정").tag(LanguageType.Default)
+                    }
+                    .pickerStyle(.wheel)
+                    .toolbar {
+                        ToolbarItem(placement: .navigationBarLeading) {
+                            Button("닫기") {
+                                isShowLanguagePicker = false
+                            }
+                        }
+                    }
+                }
+            }
         }
+        .environment(\.locale, languageState.type.locale)
         .buttonStyle(CapsuleButtonStyle())
         .padding()
     }
 }
 
-#Preview {
-    ContentView()
-}
+//#Preview {
+//    ContentView()
+//}
