@@ -26,3 +26,12 @@ SwiftUIのサンプルです。
 ## Swift Concurrency (async/await)
   - Alamofire 5.5부터 지원하는 방법입니다. https://github.com/Alamofire/Alamofire/blob/master/Documentation/AdvancedUsage.md#using-alamofire-with-swift-concurrency
   - 5.5 이전에서는 withCheckedThrowingContinuation를 이용했었습니다.
+
+## 다언어화
+  - 다언어 지원
+    - 한국어, 일본어, 영어를 지원합니다.
+    - 처음에 디바이스 설정을 가져온 뒤, 앱 내에서도 변경이 가능합니다.
+    - String Catalog를 이용합니다. 위부 번역팀과 쉽게 협업할 수 있습니다.
+   
+    - https://github.com/user-attachments/assets/fcf0aa1a-e866-49e4-9ca6-4060f5966795
+
