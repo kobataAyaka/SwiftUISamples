@@ -18,11 +18,20 @@ SwiftUIのサンプルです。
 ## UI 샘플
   - 버튼
     - 배경색 등 각종 설정을 부여한 버튼입니다. ButtonStyle를 화면전체(VStack)에 적용했습니다.
-    - ![iOS.png](https://github.com/kobataAyaka/SwiftUISamples/blob/images/ButtonStyle.png)
+    - <img width="50%" src="https://github.com/kobataAyaka/SwiftUISamples/blob/images/ButtonStyle.png">
   - 그라데이션이 부여된 쉐도우
     - View Modifier로 작성해서 모든 뷰에서 이용가능합니다.
-    - ![iOS.png](https://github.com/kobataAyaka/SwiftUISamples/blob/images/Simulator%20Screenshot%20-%20iPhone%20SE%20(3rd%20generation)%20-%202024-11-21%20at%2014.10.50.png)
+    - <img width="50%" src="https://github.com/kobataAyaka/SwiftUISamples/blob/images/Simulator%20Screenshot%20-%20iPhone%20SE%20(3rd%20generation)%20-%202024-11-21%20at%2014.10.50.png">
 
 ## Swift Concurrency (async/await)
   - Alamofire 5.5부터 지원하는 방법입니다. https://github.com/Alamofire/Alamofire/blob/master/Documentation/AdvancedUsage.md#using-alamofire-with-swift-concurrency
   - 5.5 이전에서는 withCheckedThrowingContinuation를 이용했었습니다.
+
+## 다언어화
+  - 다언어 지원
+    - 한국어, 일본어, 영어를 지원합니다.
+    - 처음에 디바이스 설정을 가져온 뒤, 앱 내에서도 변경이 가능합니다.
+    - String Catalog를 이용합니다. 위부 번역팀과 쉽게 협업할 수 있습니다.
+   
+    - https://github.com/user-attachments/assets/fcf0aa1a-e866-49e4-9ca6-4060f5966795
+
