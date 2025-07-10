@@ -98,3 +98,7 @@ xcshareddata/
 Info.plist
 .env
 .arkana.yml
+
+# Google info
+GoogleService-Info.plist
+google-services.json

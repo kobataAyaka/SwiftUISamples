@@ -16,6 +16,7 @@ struct ContentView: View {
     @State var fullscreenList = false
     @EnvironmentObject var navigationState: NavigationState
     @State var notionList = false
+    @State var firebaseList = false
     @State var isShowLanguagePicker: Bool = false
     @EnvironmentObject var languageState: LanguageState
     
@@ -55,6 +56,14 @@ struct ContentView: View {
             }
             .fullScreenCover(isPresented: $notionList) {
                 NotionListView()
+            }
+            Button {
+                self.firebaseList = true
+            } label: {
+                Text("Firebase Database 표시 버튼")
+            }
+            .fullScreenCover(isPresented: $firebaseList) {
+                FirebaseTodoListView()
             }
             Button {
                 self.isShowLanguagePicker.toggle()
