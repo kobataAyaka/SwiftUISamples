@@ -10,7 +10,7 @@ struct FirebaseTodoDetailView: View {
             VStack(alignment: .leading, spacing: 20) {
                 // Todo情報
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("Todo名")
+                    Text("Todo제목")
                         .font(.headline)
                         .foregroundColor(.secondary)
                     
@@ -23,7 +23,7 @@ struct FirebaseTodoDetailView: View {
                     HStack {
                         Image(systemName: todo.done ? "checkmark.circle.fill" : "circle")
                             .foregroundColor(todo.done ? .green : .gray)
-                        Text(todo.done ? "完了" : "未完了")
+                        Text(todo.done ? "완료" : "미완료")
                             .fontWeight(.medium)
                             .foregroundColor(todo.done ? .green : .orange)
                     }
@@ -41,7 +41,7 @@ struct FirebaseTodoDetailView: View {
                 }) {
                     HStack {
                         Image(systemName: todo.done ? "arrow.uturn.backward.circle" : "checkmark.circle.fill")
-                        Text(todo.done ? "未完了に戻す" : "完了にする")
+                        Text(todo.done ? "미완료로 되돌리기" : "완료로 하기")
                     }
                     .fontWeight(.bold)
                     .frame(maxWidth: .infinity)
@@ -88,13 +88,13 @@ struct FirebaseTodoDetailView: View {
                 
                 // 作成・更新日時
                 VStack(alignment: .leading, spacing: 10) {
-                    Text("詳細情報")
+                    Text("상세정보")
                         .font(.headline)
                         .foregroundColor(.secondary)
                     
                     HStack {
                         VStack(alignment: .leading, spacing: 4) {
-                            Text("作成日")
+                            Text("작성일")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                             Text(todo.createdAt.formatted(date: .abbreviated, time: .shortened))
@@ -104,7 +104,7 @@ struct FirebaseTodoDetailView: View {
                         Spacer()
                         
                         VStack(alignment: .trailing, spacing: 4) {
-                            Text("更新日")
+                            Text("갱신일")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
                             Text(todo.updatedAt.formatted(date: .abbreviated, time: .shortened))
@@ -120,7 +120,7 @@ struct FirebaseTodoDetailView: View {
             }
             .padding()
         }
-        .navigationTitle("Todo詳細")
+        .navigationTitle("Todo 상세")
         .navigationBarTitleDisplayMode(.inline)
     }
 }

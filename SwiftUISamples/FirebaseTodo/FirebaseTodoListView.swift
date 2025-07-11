@@ -21,7 +21,7 @@ struct FirebaseTodoListView: View {
                 
                 // ローディング表示
                 if todoManager.isLoading {
-                    ProgressView("読み込み中...")
+                    ProgressView("로딩 중...")
                         .padding()
                 }
                 
@@ -40,7 +40,7 @@ struct FirebaseTodoListView: View {
                 
                 // 追加ボタン
                 HStack(spacing: 20) {
-                    Button("テキストTodo追加") {
+                    Button("Todo추가") {
                         showingAddTodo = true
                     }
                     .buttonStyle(CapsuleButtonStyle())
@@ -52,7 +52,7 @@ struct FirebaseTodoListView: View {
                 }
                 .padding()
                 
-                Button("戻る") {
+                Button("뒤로가기") {
                     dismiss()
                 }
                 .buttonStyle(CapsuleButtonStyle())
@@ -126,11 +126,11 @@ struct AddTodoView: View {
     var body: some View {
         NavigationView {
             VStack {
-                TextField("Todo名を入力", text: $todoName)
+                TextField("Todo제목을 입력", text: $todoName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding()
                 
-                Button("追加") {
+                Button("추가") {
                     Task {
                         await todoManager.addTodo(name: todoName)
                         dismiss()
@@ -141,11 +141,11 @@ struct AddTodoView: View {
                 
                 Spacer()
             }
-            .navigationTitle("Todo追加")
+            .navigationTitle("Todo추가")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("キャンセル") {
+                    Button("취소") {
                         dismiss()
                     }
                 }
@@ -165,7 +165,7 @@ struct AddTodoWithPhotoView: View {
     var body: some View {
         NavigationView {
             VStack(spacing: 20) {
-                TextField("Todo名を入力", text: $todoName)
+                TextField("Todo제목을 입력", text: $todoName)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
                     .padding(.horizontal)
                 
@@ -179,11 +179,11 @@ struct AddTodoWithPhotoView: View {
                 }
                 
                 PhotosPicker(selection: $photosPickerItem, matching: .images) {
-                    Text("写真を選択")
+                    Text("사진 선택")
                 }
                 .buttonStyle(CapsuleButtonStyle())
                 
-                Button("追加") {
+                Button("추가") {
                     Task {
                         if let image = selectedImage {
                             await todoManager.addTodoWithImage(name: todoName, image: image)
@@ -198,11 +198,11 @@ struct AddTodoWithPhotoView: View {
                 
                 Spacer()
             }
-            .navigationTitle("写真付きTodo追加")
+            .navigationTitle("사진첨부 Todo 추가")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("キャンセル") {
+                    Button("취소") {
                         dismiss()
                     }
                 }

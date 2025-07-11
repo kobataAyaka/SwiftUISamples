@@ -95,7 +95,7 @@ class FirebaseTodoManager: ObservableObject {
     // MARK: - Todo追加（テキストのみ）
     func addTodo(name: String) async {
         guard let userID = currentUserID else {
-            self.errorMessage = "ユーザーがサインインしていません。"
+            self.errorMessage = "사용자가 사인인되어있지 않습니다."
             return
         }
         let todo = FirebaseTodo(name: name, userID: userID)
@@ -104,14 +104,14 @@ class FirebaseTodoManager: ObservableObject {
             try db.collection("todos").addDocument(from: todo)
             await fetchTodos() // 再取得
         } catch {
-            self.errorMessage = "Todoの追加に失敗しました: \(error.localizedDescription)"
+            self.errorMessage = "Todo의 추가에 실패했습니다: \(error.localizedDescription)"
         }
     }
     
     // MARK: - Todo追加（画像付き）
     func addTodoWithImage(name: String, image: UIImage) async {
         guard let userID = currentUserID else {
-            self.errorMessage = "ユーザーがサインインしていません。"
+            self.errorMessage = "사용자가 사인인되어있지 않습니다."
             return
         }
         isLoading = true
@@ -166,7 +166,7 @@ class FirebaseTodoManager: ObservableObject {
             try db.collection("todos").document(todoID).setData(from: updatedTodo)
             await fetchTodos()
         } catch {
-            self.errorMessage = "Todoの更新に失敗しました: \(error.localizedDescription)"
+            self.errorMessage = "Todo의 갱신에 실패했습니다: \(error.localizedDescription)"
         }
     }
     
@@ -179,7 +179,7 @@ class FirebaseTodoManager: ObservableObject {
             try await db.collection("todos").document(todoID).delete()
             await fetchTodos()
         } catch {
-            self.errorMessage = "Todoの削除に失敗しました: \(error.localizedDescription)"
+            self.errorMessage = "Todo의 삭제에 실패했습니다: \(error.localizedDescription)"
         }
     }
 }
