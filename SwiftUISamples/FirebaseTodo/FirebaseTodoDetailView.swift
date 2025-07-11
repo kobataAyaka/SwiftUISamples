@@ -1,6 +1,7 @@
 import SwiftUI
 
 struct FirebaseTodoDetailView: View {
+    @ObservedObject var todoManager: FirebaseTodoManager
     let todo: FirebaseTodo
     @State private var isImageLoading = false
     
@@ -31,6 +32,24 @@ struct FirebaseTodoDetailView: View {
                 .padding()
                 .background(Color.gray.opacity(0.1))
                 .cornerRadius(10)
+                
+                // MARK: - 完了・未完了切り替えボタン
+                Button(action: {
+                    Task {
+                        await todoManager.toggleTodo(todo)
+                    }
+                }) {
+                    HStack {
+                        Image(systemName: todo.done ? "arrow.uturn.backward.circle" : "checkmark.circle.fill")
+                        Text(todo.done ? "未完了に戻す" : "完了にする")
+                    }
+                    .fontWeight(.bold)
+                    .frame(maxWidth: .infinity)
+                    .padding()
+                    .background(todo.done ? Color.gray : Color.green)
+                    .foregroundColor(.white)
+                    .cornerRadius(10)
+                }
                 
                 // 画像表示
 //                if let imageURL = todo.imageURL {

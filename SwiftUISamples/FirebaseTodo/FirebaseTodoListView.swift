@@ -28,7 +28,7 @@ struct FirebaseTodoListView: View {
                 // Todo一覧
                 List {
                     ForEach(todoManager.todos) { todo in
-                        NavigationLink(destination: FirebaseTodoDetailView(todo: todo)) {
+                        NavigationLink(destination: FirebaseTodoDetailView(todoManager: todoManager, todo: todo)) {
                             FirebaseTodoRowView(todo: todo, todoManager: todoManager)
                         }
                     }
