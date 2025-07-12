@@ -1,9 +1,18 @@
 import SwiftUI
 
 struct FirebaseTodoDetailView: View {
+    @EnvironmentObject var languageState: LanguageState
     @ObservedObject var todoManager: FirebaseTodoManager
     let todo: FirebaseTodo
     @State private var isImageLoading = false
+
+    private var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        formatter.locale = languageState.type.locale
+        return formatter
+    }
     
     var body: some View {
         ScrollView {
@@ -97,7 +106,7 @@ struct FirebaseTodoDetailView: View {
                             Text("작성일")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
-                            Text(todo.createdAt.formatted(date: .abbreviated, time: .shortened))
+                            Text(dateFormatter.string(from: todo.createdAt))
                                 .font(.subheadline)
                         }
                         
@@ -107,7 +116,7 @@ struct FirebaseTodoDetailView: View {
                             Text("갱신일")
                                 .font(.caption)
                                 .foregroundColor(.secondary)
-                            Text(todo.updatedAt.formatted(date: .abbreviated, time: .shortened))
+                            Text(dateFormatter.string(from: todo.updatedAt))
                                 .font(.subheadline)
                         }
                     }

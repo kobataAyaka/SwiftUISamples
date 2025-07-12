@@ -5,6 +5,7 @@ struct FirebaseTodoListView: View {
     @StateObject private var todoManager = FirebaseTodoManager()
     @State private var showingAddTodo = false
     @Environment(\.dismiss) var dismiss
+    @EnvironmentObject var languageState: LanguageState
     
     var body: some View {
         NavigationStack {
@@ -29,7 +30,7 @@ struct FirebaseTodoListView: View {
                 List {
                     ForEach(todoManager.todos) { todo in
                         NavigationLink(destination: FirebaseTodoDetailView(todoManager: todoManager, todo: todo)) {
-                            FirebaseTodoRowView(todo: todo, todoManager: todoManager)
+                            FirebaseTodoRowView(todo: todo, todoManager: todoManager, languageState: languageState)
                         }
                     }
                     .onDelete(perform: deleteTodos)
@@ -88,6 +89,15 @@ struct FirebaseTodoListView: View {
 struct FirebaseTodoRowView: View {
     let todo: FirebaseTodo
     let todoManager: FirebaseTodoManager
+    let languageState: LanguageState
+    
+    private var dateFormatter: DateFormatter {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .short
+        formatter.timeStyle = .short
+        formatter.locale = languageState.type.locale
+        return formatter
+    }
     
     var body: some View {
         HStack {
@@ -106,7 +116,7 @@ struct FirebaseTodoRowView: View {
                     .strikethrough(todo.done)
                     .foregroundColor(todo.done ? .gray : .primary)
                 
-                Text(todo.createdAt.formatted(date: .abbreviated, time: .shortened))
+                Text(dateFormatter.string(from: todo.createdAt))
                     .font(.caption)
                     .foregroundColor(.secondary)
             }
