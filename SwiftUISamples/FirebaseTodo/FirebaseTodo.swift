@@ -115,21 +115,49 @@ class FirebaseTodoManager: ObservableObject {
             return
         }
         isLoading = true
-        
+
         do {
             // 1. 画像をFirebase Storageにアップロード
-            let imageURL = try await uploadImage(image, userID: userID)
-            
-            // 2. 画像URLを含むTodoを作成
+            let _ = try await uploadImage(image, userID: userID)
+
+            // 2. Todoを作成
             let todo = FirebaseTodo(name: name, userID: userID)
             try db.collection("todos").addDocument(from: todo)
-            
+
             // 3. 一覧を再取得
             await fetchTodos()
+
+        } catch let error where (error as NSError).domain == StorageErrorDomain {
+            // Firebase Storageのエラーの場合、Supabaseにフォールバック
+            print("Firebase upload failed, trying Supabase. Error: \(error.localizedDescription)")
+
+            guard let imageData = image.jpegData(compressionQuality: 0.8) else {
+                self.errorMessage = "Image conversion failed."
+                self.isLoading = false
+                return
+            }
+            let fileName = "\(UUID().uuidString).jpg"
+
+            do {
+                // Supabaseにアップロード
+                try await SwiftUISamples.uploadImage(imageData: imageData, fileName: fileName)
+                print("Supabase upload successful.")
+
+                // Todoを作成 (画像URLなし)
+                let todo = FirebaseTodo(name: name, userID: userID)
+                try db.collection("todos").addDocument(from: todo)
+                await fetchTodos()
+
+            } catch {
+                // Supabaseも失敗
+                self.errorMessage = "Image upload failed for both Firebase and Supabase: \(error.localizedDescription)"
+            }
+
         } catch {
-            self.errorMessage = "画像付きTodoの追加に失敗しました: \(error.localizedDescription)"
+            // その他のエラー
+            self.errorMessage = "Failed to add todo with image: \(error.localizedDescription)"
         }
-        
+
         isLoading = false
     }
     

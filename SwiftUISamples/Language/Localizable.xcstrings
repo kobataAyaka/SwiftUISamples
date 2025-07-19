@@ -134,6 +134,12 @@
         }
       }
     },
+    "Supabase 테스트 Todo 입력" : {
+
+    },
+    "Supabase 테스트 Todo 추가" : {
+
+    },
     "Todo 상세" : {
       "localizations" : {
         "en" : {

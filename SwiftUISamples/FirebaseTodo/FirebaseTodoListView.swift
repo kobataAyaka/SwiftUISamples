@@ -67,11 +67,8 @@ struct FirebaseTodoListView: View {
                 }
             }
             .sheet(isPresented: $showingAddTodo) {
-                AddTodoView(todoManager: todoManager)
+                AddTodoWithPhotoView(todoManager: todoManager)
             }
-//            .sheet(isPresented: $showingAddTodoWithPhoto) {
-//                AddTodoWithPhotoView(todoManager: todoManager)
-//            }
         }
     }
     

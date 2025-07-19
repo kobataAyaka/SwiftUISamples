@@ -19,6 +19,8 @@ struct ContentView: View {
     @State var firebaseList = false
     @State var isShowLanguagePicker: Bool = false
     @EnvironmentObject var languageState: LanguageState
+    @State var testTodoText: String = ""
+    @State var testTodoMessage: String = ""
     
     var body: some View {
         VStack {
@@ -65,6 +67,29 @@ struct ContentView: View {
             .fullScreenCover(isPresented: $firebaseList) {
                 FirebaseTodoListView()
             }
+            
+            TextField("Supabase 테스트 Todo 입력", text: $testTodoText)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding(.horizontal)
+            
+            Button {
+                Task {
+                    do {
+                        try await addTestTodo(text: testTodoText)
+                        testTodoText = "" // 入力フィールドをクリア
+                        testTodoMessage = "Supabase 테스트 Todo 추가 성공!"
+                    } catch {
+                        testTodoMessage = "Supabase 테스트 Todo 추가 실패: \(error.localizedDescription)"
+                    }
+                }
+            } label: {
+                Text("Supabase 테스트 Todo 추가")
+            }
+            
+            Text(testTodoMessage)
+                .foregroundColor(.blue)
+                .padding(.bottom)
+            
             Button {
                 self.isShowLanguagePicker.toggle()
             } label: {
