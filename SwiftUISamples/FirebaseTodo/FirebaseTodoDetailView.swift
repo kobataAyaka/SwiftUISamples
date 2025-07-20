@@ -67,21 +67,6 @@ struct FirebaseTodoDetailView: View {
                             .font(.headline)
                             .foregroundColor(.secondary)
                         
-                        Task {
-                            do {
-                                let (data, response) = try await URLSession.shared.data(from: URL(string: imageURL)!)
-                                print("✅ response:", response)
-                                print("✅ data size:", data.count)
-                                if let image = UIImage(data: data) {
-                                    print("✅ 画像として読み込み成功")
-                                } else {
-                                    print("❌ DataからUIImageを作れなかった")
-                                }
-                            } catch {
-                                print("❌ Error:", error)
-                            }
-                        }
-                        
                         AsyncImage(url: URL(string: imageURL)) { phase in
                             switch phase {
                             case .empty:
@@ -122,23 +107,6 @@ struct FirebaseTodoDetailView: View {
                                 .frame(maxWidth: .infinity)
                                 .background(Color.gray.opacity(0.1))
                                 .cornerRadius(10)
-                                .onAppear {
-                                    Task {
-                                        do {
-                                            let (data, response) = try await URLSession.shared.data(from: imageURL)
-                                            print("✅ response:", response)
-                                            print("✅ data size:", data.count)
-                                            if let image = UIImage(data: data) {
-                                                print("✅ 画像として読み込み成功")
-                                            } else {
-                                                print("❌ DataからUIImageを作れなかった")
-                                            }
-                                        } catch {
-                                            print("❌ Error:", error)
-                                        }
-                                    }
-
-                                }
                             @unknown default:
                                 EmptyView()
                             }
@@ -185,6 +153,20 @@ struct FirebaseTodoDetailView: View {
                 Spacer()
             }
             .padding()
+            .onAppear {
+                Task {
+                    do {
+                        let (data, response) = try await URLSession.shared.data(from: URL(string: todo.imageURL!)!)
+                        print("✅ HTTP Response: \((response as? HTTPURLResponse)?.statusCode ?? -1)")
+                        print("✅ Content Type: \((response as? HTTPURLResponse)?.value(forHTTPHeaderField: "Content-Type") ?? "unknown")")
+                        print("✅ Image size: \(data.count) bytes")
+                        let uiImage = UIImage(data: data)
+                        print("✅ UIImage: \(uiImage != nil ? "OK" : "NG")")
+                    } catch {
+                        print("❌ Error: \(error)")
+                    }
+                }
+            }
         }
         .navigationTitle("Todo 상세")
         .navigationBarTitleDisplayMode(.inline)
