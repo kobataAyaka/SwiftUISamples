@@ -61,39 +61,96 @@ struct FirebaseTodoDetailView: View {
                 }
                 
                 // 画像表示
-//                if let imageURL = todo.imageURL {
-//                    VStack(alignment: .leading, spacing: 10) {
-//                        Text("添付画像")
-//                            .font(.headline)
-//                            .foregroundColor(.secondary)
-//                        
-//                        AsyncImage(url: URL(string: imageURL)) { image in
-//                            image
-//                                .resizable()
-//                                .scaledToFit()
-//                                .cornerRadius(10)
-//                                .shadow(radius: 5)
-//                        } placeholder: {
-//                            VStack {
-//                                ProgressView()
-//                                    .scaleEffect(1.2)
-//                                Text("画像読み込み中...")
-//                                    .font(.caption)
-//                                    .foregroundColor(.secondary)
-//                            }
-//                            .frame(height: 200)
-//                            .frame(maxWidth: .infinity)
-//                            .background(Color.gray.opacity(0.1))
-//                            .cornerRadius(10)
-//                        }
-//                        .onTapGesture {
-//                            // 画像をフルスクリーンで表示（実装は後で）
-//                        }
-//                    }
-//                    .padding()
-//                    .background(Color.gray.opacity(0.1))
-//                    .cornerRadius(10)
-//                }
+                if let imageURL = todo.imageURL {
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("添付画像")
+                            .font(.headline)
+                            .foregroundColor(.secondary)
+                        
+                        Task {
+                            do {
+                                let (data, response) = try await URLSession.shared.data(from: URL(string: imageURL)!)
+                                print("✅ response:", response)
+                                print("✅ data size:", data.count)
+                                if let image = UIImage(data: data) {
+                                    print("✅ 画像として読み込み成功")
+                                } else {
+                                    print("❌ DataからUIImageを作れなかった")
+                                }
+                            } catch {
+                                print("❌ Error:", error)
+                            }
+                        }
+                        
+                        AsyncImage(url: URL(string: imageURL)) { phase in
+                            switch phase {
+                            case .empty:
+                                // 画像読み込み中のプレースホルダー
+                                VStack {
+                                    ProgressView()
+                                        .scaleEffect(1.2)
+                                    Text("画像読み込み中...")
+                                        .font(.caption)
+                                        .foregroundColor(.secondary)
+                                }
+                                .frame(height: 200)
+                                .frame(maxWidth: .infinity)
+                                .background(Color.gray.opacity(0.1))
+                                .cornerRadius(10)
+                            case .success(let image):
+                                // 読み込み成功
+                                image
+                                    .resizable()
+                                    .scaledToFit()
+                                    .cornerRadius(10)
+                                    .shadow(radius: 5)
+                            case .failure(let error):
+                                // 読み込み失敗
+                                VStack {
+                                    Image(systemName: "photo")
+                                        .font(.largeTitle)
+                                        .foregroundColor(.secondary)
+                                    Text("画像の読み込みに失敗しました")
+                                        .font(.caption)
+                                    // エラーの詳細を表示（デバッグ用）
+                                    Text(error.localizedDescription)
+                                        .font(.caption2)
+                                        .foregroundColor(.red)
+                                        .padding()
+                                }
+                                .frame(height: 200)
+                                .frame(maxWidth: .infinity)
+                                .background(Color.gray.opacity(0.1))
+                                .cornerRadius(10)
+                                .onAppear {
+                                    Task {
+                                        do {
+                                            let (data, response) = try await URLSession.shared.data(from: imageURL)
+                                            print("✅ response:", response)
+                                            print("✅ data size:", data.count)
+                                            if let image = UIImage(data: data) {
+                                                print("✅ 画像として読み込み成功")
+                                            } else {
+                                                print("❌ DataからUIImageを作れなかった")
+                                            }
+                                        } catch {
+                                            print("❌ Error:", error)
+                                        }
+                                    }
+
+                                }
+                            @unknown default:
+                                EmptyView()
+                            }
+                        }
+                        .onTapGesture {
+                            // 画像をフルスクリーンで表示（実装は後で）
+                        }
+                    }
+                    .padding()
+                    .background(Color.gray.opacity(0.1))
+                    .cornerRadius(10)
+                }
                 
                 // 作成・更新日時
                 VStack(alignment: .leading, spacing: 10) {
@@ -141,15 +198,15 @@ extension FirebaseTodo {
     static let sampleTodo = FirebaseTodo(
         name: "Firebase連携のテスト",
         done: false,
-//        imageURL: "https://via.placeholder.com/300x200",
-        userID: "sample_user"
+        userID: "sample_user",
+        imageURL: "https://via.placeholder.com/300x200"
     )
     
     static let sampleCompletedTodo = FirebaseTodo(
         name: "完了したTodo",
         done: true,
-//        imageURL: nil,
-        userID: "sample_user"
+        userID: "sample_user",
+        imageURL: nil
     )
 }
 

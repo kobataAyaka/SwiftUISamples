@@ -19,7 +19,7 @@ func uploadImage(imageData: Data, fileName: String) async throws {
 
     try await supabase.storage
         .from(bucket)
-        .upload(path: path, file: imageData, options: FileOptions(contentType: "image/jpeg", upsert: true))
+        .upload(path, data: imageData, options: FileOptions(contentType: "image/jpeg", upsert: true))
 
     print("✅ アップロード成功！: \(path)")
 }
